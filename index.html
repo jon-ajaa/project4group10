@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header Start -->
+    <!-- head -->
     <header id="header">
         <div class="logo"><p><b>JFC</b></p></div>
         <nav id="nav-bar">
@@ -16,17 +16,31 @@
             <li><a href="#reviews">Reviews</a></li>
         </nav>
     </header>
-    <!-- Header End -->
+    <!-- head -->
     
-    <!-- About us Section Start -->
-    <section class="about-us header">
+    <!-- about|body -->
+    <section id="about-us" class="about-us header">
         <div class="container">
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <img id="slide-1" src="Images/baconburger.jpg" alt="Bacon Burger" />
+                    <img id="slide-2" src="Images/chickengrill.jpg" alt="Chicken Grill" />
+                    <img id="slide-3" src="Images/cocacola.jpg" alt="Coca-cola" />
+                </div>
+                <div class="slider-nav">
+                    <a href="#slide-1"></a>
+                    <a href="#slide-2"></a>
+                    <a href="#slide-3"></a>
+                </div>
+            </div>
             <h2>About us</h2>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto maxime eaque deserunt dicta quam voluptatum ea nisi ab, voluptates fugiat quas natus ratione, delectus aliquam mollitia? A neque quisquam nam repudiandae natus corrupti. Ea eveniet vel facilis ad excepturi nobis!</p>
         </div>
     </section>
-    <!-- About us Section End -->
+    <!-- about|body -->
     
+    <!-- our menu section -->
+        <section id="our-menu" class="our-menu header">
     
     <!-- Our Menu Section Start -->
         <section class="our-menu header">
@@ -116,11 +130,51 @@
                 </div>
             </div>
         </section>
-    <!-- Our Menu Section End -->
+    <!-- our menu section -->
 
-    <!-- Reviews Section Start -->
-     <section class="reviews header">
+    <!-- review section -->
+     <section id="reviews" class="reviews header">
         <div class="container">
+        <h2>Reviews</h2>
+        <input type="radio" name="position" id="radio1"/>
+        <input type="radio" name="position" id="radio2"/>
+        <input type="radio" name="position" id="radio3" checked/>
+        <input type="radio" name="position" id="radio4"/>
+        <input type="radio" name="position" id="radio5"/>
+        <br>
+        <br>
+        <main id="carousel">
+          <div class="item">
+            <img src="images/dadang.jpg">
+            <h3 class="name">Mas Dadang</h3>
+            <p class="occupation">Dukun Cinta</p>
+            <p class="testimonial">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, suscipit?</p>
+          </div>
+          <div class="item">
+            <img src="images/masamba.jpg">
+            <h3 class="name">Mas Amba</h3>
+            <p class="occupation">Filsuf Teknik</p>
+            <p class="testimonial">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, dolore.</p>
+          </div>
+          <div class="item">
+            <img src="images/ngawisatoru.jpg">
+            <h3 class="name">Ngawi Satoru</h3>
+            <p class="occupation">Pengendali Eek Kucing</p>
+            <p class="testimonial">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, temporibus?</p>
+          </div>
+          <div class="item">
+            <img src="images/sigit.jpg">
+            <h3 class="name">Sigit Pintar</h3>
+            <p class="occupation">Autistic Researcher</p>
+            <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, beatae?</p>
+          </div>
+          <div class="item">
+            <img src="images/windahslebew.jpg">
+            <h3 class="name">Windah Slebew</h3>
+            <p class="occupation">Downsyndrome Gangster</p>
+            <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, tempore.</p>
+          </div>
+        </main>
             <h2>Reviews</h2>
             <div class="grid-items-gird">
                 <h5 class="rev-name">Mas Rusdi</h5>
@@ -150,13 +204,35 @@
         </div>
         
      </section>
-    <!-- Reviews Section End -->
+    </div>
+    <!-- reviews section -->
 
-    <!-- Footer Start -->
+     <!-- contact us section -->
+     <section class="contact-us">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out to us. We're here to help you.</p>
+        <form action="mailto:azhardevelop@gmail.com" method="post" enctype="text/plain" class="contact-form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name">
+            
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address">
+            
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message"></textarea>
+            
+            <button type="submit" value="Submit">Send Message</button>
+        </form>
+    </section>
+    
+    <!-- contact us section -->
+     
+
+    <!-- footer -->
      <footer id="footer">
         <p>&copy; 2024 JFC.com by PT BLACKFOOD Ngawi Tbk. | All rights reserved.</p>
      </footer>
-    <!-- Footer End -->
+    <!-- footer -->
     
     <script src="script.js"></script>
 </body>
