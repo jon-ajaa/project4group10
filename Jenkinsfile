@@ -9,6 +9,7 @@ pipeline {
         AUTHOR2 = "Gerhard Jeremia"
     }
 
+
     stages {
         stage('Environment Information'){
             steps{
@@ -45,7 +46,7 @@ pipeline {
                         \$imageId = docker images -q ${$DOCKER_IMAGE}
                         if (\$imageId){
                             echo "Removing existing image: \$imageId"
-                            docker rm \$imageId -f
+                            docker rmi \$imageId -f
                         }else{
                             echo "No existing image"
                         }
