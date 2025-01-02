@@ -11,14 +11,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                // Build Docker image
+                // build Docker image
                 sh 'docker build -t jfc-web-app .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                // Jalankan container
+                // run container
                 sh 'docker run -d -p 8080:80 --name jfc-web jfc-web-app'
             }
         }
@@ -26,7 +26,7 @@ pipeline {
 
     post {
         always {
-            // Cleanup setelah pipeline selesai
+            // cleanup setelah pipeline selesai
             sh 'docker rm -f jfc-web || true'
             sh 'docker rmi -f jfc-web-app || true'
         }
