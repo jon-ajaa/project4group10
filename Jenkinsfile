@@ -22,22 +22,6 @@ pipeline {
         }
     }
 
-    //stage('Clean Existing Container') {
-      //   steps {
-        //     script {
-          //       powershell """
-            //     \$imageId - docker images -q ${DOCKER_IMAGE}
-              //   if(\$imageId){
-                //    echo "Removing Existing image: \$imageId"
-                  //  docker rmi \$imageId -f
-                 //}else{
-                   // echo "No existing image to remove"
-                 //}
-                 //"""
-            //}
-         //}
-     //}
-
     stages {
         stage('Build Docker Image') {
             steps {
@@ -47,10 +31,24 @@ pipeline {
             }
         }
 
-    stage('Run Docker Container') {
+    // stage('Clean Existing Container') {
+    //     steps {
+    //         script {
+    //             bat """
+    //             FOR /F "tokens=*" %%i IN ('docker ps -aq -f "name=${CONTAINER_NAME}"') DO (
+    //                 docker stop %%i || echo "No running container"
+    //                 docker rm %%i || echo "No container to remove"
+    //             )
+    //             """
+    //         }
+    //     }
+    // }
+
+
+        stage('Run Docker Container') {
             steps {
                 script {
-                    // run docker container based on the built image
+                    // Run Docker container based on the built image
                     docker.image("${DOCKER_IMAGE}").run("-p ${PORT_MAPPING} --name ${CONTAINER_NAME}")
                 }
             }
