@@ -393,7 +393,7 @@ input[type="radio"]:checked::after {
 
 .contact-us h2 {
     font-size: 40px;
-    color: #d32323;
+    color: #fff;
     margin-bottom: 15px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
