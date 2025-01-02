@@ -25,11 +25,14 @@ pipeline {
     stage('Clean Existing Container') {
          steps {
              script {
-                 bat """
-                 FOR /F "tokens=*" %%i IN ('docker ps -aq -f "name=${CONTAINER_NAME}"') DO (
-                     docker stop %%i || echo "No running container"
-                     docker rm %%i || echo "No container to remove"
-                 )
+                 powershell """
+                 \$imageId - docker images -q ${DOCKER_IMAGE}
+                 if(\$imageId){
+                    echo "Removing Existing image: \$imageId"
+                    docker rmi \$imageId -f
+                 }else{
+                    echo "No existing image to remove"
+                 }
                  """
              }
          }
