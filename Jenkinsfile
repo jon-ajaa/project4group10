@@ -22,21 +22,21 @@ pipeline {
         }
     }
 
-    stage('Clean Existing Container') {
-         steps {
-             script {
-                 powershell """
-                 \$imageId - docker images -q ${DOCKER_IMAGE}
-                 if(\$imageId){
-                    echo "Removing Existing image: \$imageId"
-                    docker rmi \$imageId -f
-                 }else{
-                    echo "No existing image to remove"
-                 }
-                 """
-             }
-         }
-     }
+    //stage('Clean Existing Container') {
+      //   steps {
+        //     script {
+          //       powershell """
+            //     \$imageId - docker images -q ${DOCKER_IMAGE}
+              //   if(\$imageId){
+                //    echo "Removing Existing image: \$imageId"
+                  //  docker rmi \$imageId -f
+                 //}else{
+                   // echo "No existing image to remove"
+                 //}
+                 //"""
+            //}
+         //}
+     //}
 
     stages {
         stage('Build Docker Image') {
