@@ -39,7 +39,7 @@ pipeline {
             }
         } 
 
-        stage{'Clean Existing Image'}{
+        stage('Clean Existing Image'){
             steps{
                 script{
                     powershell """
