@@ -1,11 +1,14 @@
-# Gunakan image Nginx sebagai base
+# use the official Nginx image as the base image
 FROM nginx:alpine
 
-# Salin file website ke direktori default Nginx
-COPY index.html /usr/share/nginx/html/
-COPY style.css /usr/share/nginx/html/
-COPY script.js /usr/share/nginx/html/
-COPY Images/ /usr/share/nginx/html/Images/
+# remove the default Nginx welcome page
+RUN rm -rf /usr/share/nginx/html/*
 
-# Expose port 80 untuk akses HTTP
+# copy the HTML file to the Nginx web server root
+COPY . . /usr/share/nginx/html/
+
+# expose the default Nginx port (80)
 EXPOSE 80
+
+# command to start Nginx when the container starts
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,21 +1,26 @@
 pipeline {
     agent any
 
+     environment {
+        DOCKER_IMAGE = 'jonajaa/web-jfc:latest'
+        CONTAINER_NAME = 'jfc'
+        PORT_MAPPING = '8089:80'  // adjust the port mapping as needed
+    }
+
     stages {
         stage('Build Docker Image') {
             steps {
-                // build Docker image dengan nama 'jfc-web'
                 script {
-                    sh 'docker build -t jfc-web .'
+                    docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
                 }
             }
         }
         
         stage('Run Docker Container') {
             steps {
-                // jalankan container dari image 'jfc-web'
                 script {
-                    sh 'docker run -d -p 8080:80 --name jfc-web-container jfc-web'
+                    // run docker container
+                    docker.image("${DOCKER_IMAGE}").run("-p ${PORT_MAPPING} --name ${CONTAINER_NAME}")
                 }
             }
         }
