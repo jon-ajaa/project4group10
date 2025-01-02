@@ -26,7 +26,7 @@ pipeline {
             steps{
                 script{
                     powershell """
-                    \$containerId = docker ps -aq -f "name=${CONTAINER_NAME}"
+                        \$containerId = docker ps -aq -f "name=${CONTAINER_NAME}"
                         if(\$containerId){
                         echo "Stopping and removing container: \$containerId"
                         docker stop \$containerId
@@ -43,12 +43,12 @@ pipeline {
             steps{
                 script{
                     powershell """
-                        \$imageId = docker images -q ${$DOCKER_IMAGE}
+                        \$imageId = docker images -q ${DOCKER_IMAGE}
                         if (\$imageId){
                             echo "Removing existing image: \$imageId"
                             docker rmi \$imageId -f
                         }else{
-                            echo "No existing image"
+                            echo "No existing image to remove"
                         }
                     """
                 }
