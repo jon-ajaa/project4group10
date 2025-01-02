@@ -2,13 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                // clone repo dari GitHub
-                git 'https://github.com/jon-ajaa/Project-4.git'
-            }
-        }
-        
         stage('Build Docker Image') {
             steps {
                 // build Docker image dengan nama 'jfc-web'
@@ -30,7 +23,7 @@ pipeline {
 
     post {
         always {
-            echo "Pipeline Selesai!"
+            echo "pipeline Selesai!"
         }
     }
 }
