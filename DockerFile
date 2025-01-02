@@ -5,7 +5,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # copy the HTML file to the Nginx web server root
-COPY . . /usr/share/nginx/html/
+COPY . . /usr/share/nginx/html
 
 # expose the default Nginx port (80)
 EXPOSE 80

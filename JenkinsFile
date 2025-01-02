@@ -1,34 +1,42 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE = 'jonajaa/jfc:latest'
+        CONTAINER_NAME = 'jfc'
+        PORT_MAPPING = '8089:80'  // adjust the port mapping as needed
+    }
+
     stages {
-        stage('Clone Repository') {
+        stage('Build Docker Image') {
             steps {
-                // Clone repository
-                git 'https://github.com/jon-ajaa/Project-4.git'
+                script {
+                    docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
+                }
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                // build Docker image
-                sh 'docker build -t jfc-web-app .'
-            }
-        }
+    // stage('Clean Existing Container') {
+    //     steps {
+    //         script {
+    //             bat """
+    //             FOR /F "tokens=*" %%i IN ('docker ps -aq -f "name=${CONTAINER_NAME}"') DO (
+    //                 docker stop %%i || echo "No running container"
+    //                 docker rm %%i || echo "No container to remove"
+    //             )
+    //             """
+    //         }
+    //     }
+    // }
+
 
         stage('Run Docker Container') {
             steps {
-                // run container
-                sh 'docker run -d -p 8080:80 --name jfc-web jfc-web-app'
+                script {
+                    // run Docker container based on the built image
+                    docker.image("${DOCKER_IMAGE}").run("-p ${PORT_MAPPING} --name ${CONTAINER_NAME}")
+                }
             }
-        }
-    }
-
-    post {
-        always {
-            // cleanup setelah pipeline selesai
-            sh 'docker rm -f jfc-web || true'
-            sh 'docker rmi -f jfc-web-app || true'
         }
     }
 }
