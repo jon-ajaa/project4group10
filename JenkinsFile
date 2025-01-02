@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                // clone repo dari GitHub
+                git 'https://github.com/jon-ajaa/Project-4.git'
+            }
+        }
+        
+        stage('Build Docker Image') {
+            steps {
+                // build Docker image dengan nama 'jfc-web'
+                script {
+                    sh 'docker build -t jfc-web .'
+                }
+            }
+        }
+        
+        stage('Run Docker Container') {
+            steps {
+                // jalankan container dari image 'jfc-web'
+                script {
+                    sh 'docker run -d -p 8080:80 --name jfc-web-container jfc-web'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Pipeline Selesai!"
+        }
+    }
+}

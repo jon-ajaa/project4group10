@@ -1,0 +1,11 @@
+# Gunakan image Nginx sebagai base
+FROM nginx:alpine
+
+# Salin file website ke direktori default Nginx
+COPY index.html /usr/share/nginx/html/
+COPY style.css /usr/share/nginx/html/
+COPY script.js /usr/share/nginx/html/
+COPY Images/ /usr/share/nginx/html/Images/
+
+# Expose port 80 untuk akses HTTP
+EXPOSE 80
