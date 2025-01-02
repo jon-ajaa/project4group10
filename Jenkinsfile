@@ -1,40 +1,6 @@
 pipeline {
     agent any
 
-    
-
-    stages{
-        
-
-           
-        }
-
-     stages {
-        stage('Build Docker Image') {
-            steps {
-                script {
-                        docker.build("${DOCKER_IMAGE}", '-f Dockerfile .')
-                    }
-                }
-            }
-        }
-
-
-            stage('Run Docker Container') {
-                steps {
-                    script {
-                        // Run Docker container based on the built image
-                        docker.image("${DOCKER_IMAGE}").run("-p ${PORT_MAPPING} --name ${CONTAINER_NAME}")
-                    }
-                }
-            }
-        }
-    }
-}
-
-pipeline {
-    agent any
-
     environment {
         DOCKER_IMAGE = 'jonajaa/jfc:latest'
         CONTAINER_NAME = 'jfc'
